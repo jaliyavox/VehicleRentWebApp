@@ -15,12 +15,17 @@
             <li><a href="index.jsp" class="hover:text-blue-300">Home</a></li>
             <li><a href="vehicles" class="hover:text-blue-300">Vehicles</a></li>
             <li><a href="reviews" class="hover:text-blue-300">Reviews</a></li>
-            <% if (session.getAttribute("isAdmin") != null && (Boolean)session.getAttribute("isAdmin")) { %>
-                <li><a href="admin" class="hover:text-blue-300">Dashboard</a></li>
+            <% if (session.getAttribute("user") != null) { %>
+                <% if (session.getAttribute("isAdmin") != null && (Boolean)session.getAttribute("isAdmin")) { %>
+                    <li><a href="admin" class="hover:text-blue-300">Dashboard</a></li>
+                <% } else { %>
+                    <li><a href="dashboard" class="hover:text-blue-300">Dashboard</a></li>
+                <% } %>
+                <li><a href="logout" class="hover:text-blue-300">Logout</a></li>
             <% } else { %>
-                <li><a href="dashboard" class="hover:text-blue-300">Dashboard</a></li>
+                <li><a href="login.jsp" class="hover:text-blue-300">Login</a></li>
+                <li><a href="register.jsp" class="hover:text-blue-300">Register</a></li>
             <% } %>
-            <li><a href="logout" class="hover:text-blue-300">Logout</a></li>
         </ul>
     </nav>
 </header>
